@@ -1,0 +1,23 @@
+def trade_statistics(list):  #these are without TF applied
+    wins = [i for i in PnL if i>0 or i==0]
+    losses = [i for i in PnL if i<0]
+    avg_win = sum(wins)/len(wins)
+    avg_loss = sum(losses)/len(losses)
+    num_wins = len(wins)
+    num_losses = len(losses)
+    
+    print('Total trades: ',len(list))
+    print('Num wins: ',len(wins))
+    print('Num losses: ',len(losses))
+    print('Win % = {:.2%}'.format(len(wins)/len(losses)))
+    print()
+    print('Max win = {:.2f}'.format(np.max(wins)))
+    print('Max loss = {:.2f}'.format(np.min(losses)))
+    print()
+    print('Mean win = {:.2f}'.format(avg_win))
+    print('Mean loss = {:.2f}'.format(avg_loss))
+    print('Mean trade = {:.2f}'.format(sum(list)/len(list)))
+    print('Profit Factor = {:.3f}'.format((num_wins*avg_win)/(num_losses*avg_loss*-1)))
+    print()
+    print('Std.dev wins = {:.2f}'.format(np.std(wins)))
+    print('Std.dev losses = {:.2f}'.format(np.std(losses)))
